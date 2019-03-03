@@ -4,24 +4,14 @@ help: ## Show this text.
 
 .PHONY: all test clean help
 
-all:
-	@true
+all: template.yaml lambda/macro.py lambda/resource.py ## Build a package
+	sam package \
+		--template-file template.yaml \
+		--output-template-file packaged.yaml \
+		--s3-bucket shogo82148-sam
 
 test:
 	sam validate
 
 clean:
 	@rm -f packaged.yaml
-
-##### AWS SAM
-
-.PHONY: release-sam
-
-release-sam: template.yaml lambda/macro.py lambda/resource.py ## Release the application to AWS Serverless Application Repository
-	sam package \
-		--template-file template.yaml \
-		--output-template-file packaged.yaml \
-		--s3-bucket shogo82148-sam
-	sam publish \
-		--template packaged.yaml \
-		--region us-east-1

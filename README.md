@@ -73,8 +73,10 @@ Resources:
 
 ### Deploy CloudFormation Macro into Your Account
 
-You can deploy cfn-json-string-macro from [AWS Serverless Application Repository](https://serverlessrepo.aws.amazon.com/applications/arn:aws:serverlessrepo:us-east-1:445285296882:applications~cfn-json-string-macro).
-Open it and click the deploy button.
+```bash
+sam package --template-file template.yml --s3-bucket $YOUR_BUCKET_NAME --output-template-file packaged.yaml
+aws cloudformation deploy --template-file packaged.yaml --stack-name json-macro --capabilities CAPABILITY_IAM
+```
 
 ### Write Your Templates
 
@@ -95,4 +97,8 @@ Outputs:
   JSON:
     # Get JSON string as an attribute
     Value: !GetAtt JSON.Text
+```
+
+```bash
+aws cloudformation deploy --template-file example.yaml --stack-name json-macro-example
 ```
