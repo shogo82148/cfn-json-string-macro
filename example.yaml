@@ -1,0 +1,16 @@
+AWSTemplateFormatVersion: 2010-09-09
+Transform: JSONString # add "JSONString" to the Transform section
+
+Resources:
+  JSON:
+    Type: JSON::String # specify "JSON::String"
+    Properties:
+      Text:
+        AcountId: !Ref AWS::AccountId
+        Region: !Ref AWS::Region
+        StackId: !Ref AWS::StackId
+
+Outputs:
+  JSON:
+    # Get JSON string as an attribute
+    Value: !GetAtt JSON.Text
