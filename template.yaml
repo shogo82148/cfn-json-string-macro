@@ -14,7 +14,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Runtime: python3.7
-      CodeUri: ./lambda
+      CodeUri: ./lambda.zip
       Handler: macro.handler
       Environment:
         Variables:
