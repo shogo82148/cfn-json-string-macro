@@ -115,7 +115,7 @@ You can deploy cfn-json-string-macro without `git clone` and `aws cloudformation
 
 ```bash
 aws cloudformation create-stack \
-    --template-url https://s3-$REGION.amazonaws.com/shogo82148-cloudformation-template-$REGION/cfn-json.string-macro/latest.yaml \
+    --template-url https://s3-$REGION.amazonaws.com/shogo82148-cloudformation-template-$REGION/cfn-json-string-macro/latest.yaml \
     --stack-name json-macro \
     --capabilities CAPABILITY_IAM CAPABILITY_AUTO_EXPAND
 ```
