@@ -73,7 +73,12 @@ Resources:
 
 ### Deploy CloudFormation Macro into Your Account
 
+Download this repository and deploy template with aws-cli.
+
 ```bash
+git clone git@github.com:shogo82148/cfn-json-string-macro.git
+cd cfn-json-string-macro
+make all
 aws cloudformation package --template-file template.yml --s3-bucket $YOUR_BUCKET_NAME --output-template-file packaged.yaml
 aws cloudformation deploy --template-file packaged.yaml --stack-name json-macro --capabilities CAPABILITY_IAM
 ```
@@ -101,4 +106,16 @@ Outputs:
 
 ```bash
 aws cloudformation deploy --template-file example.yaml --stack-name json-macro-example
+```
+
+### Deploy Packaged Template
+
+Packaged templates are available on `https://s3-$REGION.amazonaws.com/shogo82148-cloudformation-template-$REGION/cfn-json.string-macro/latest.yaml`,
+You can deploy cfn-json-string-macro without `git clone` and `aws cloudformation package`.
+
+```bash
+aws cloudformation create-stack \
+    --template-url https://s3-$REGION.amazonaws.com/shogo82148-cloudformation-template-$REGION/cfn-json.string-macro/latest.yaml \
+    --stack-name json-macro \
+    --capabilities CAPABILITY_IAM CAPABILITY_AUTO_EXPAND
 ```
