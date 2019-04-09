@@ -74,7 +74,7 @@ Resources:
 ### Deploy CloudFormation Macro into Your Account
 
 ```bash
-sam package --template-file template.yml --s3-bucket $YOUR_BUCKET_NAME --output-template-file packaged.yaml
+aws cloudformation package --template-file template.yml --s3-bucket $YOUR_BUCKET_NAME --output-template-file packaged.yaml
 aws cloudformation deploy --template-file packaged.yaml --stack-name json-macro --capabilities CAPABILITY_IAM
 ```
 
