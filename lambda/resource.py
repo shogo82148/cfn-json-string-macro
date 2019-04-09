@@ -14,13 +14,13 @@ def handler(event, context):
     data = {}
     for k, v in event['ResourceProperties'].items():
         data[k] = json.dumps(v, separators = (',', ':'), sort_keys = True)
-    resouceId = event.get('PhysicalResourceId') or str(uuid.uuid4())
+    resourceId = event.get('PhysicalResourceId') or str(uuid.uuid4())
     ret = {
         'Status': 'SUCCESS',
         'StackId': event['StackId'],
         'RequestId': event['RequestId'],
         'LogicalResourceId': event['LogicalResourceId'],
         'Data': data,
-        'PhysicalResourceId': resouceId,
+        'PhysicalResourceId': resourceId,
     }
     cfn_response(event['ResponseURL'], ret)
