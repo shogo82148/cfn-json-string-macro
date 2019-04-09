@@ -4,11 +4,10 @@ help: ## Show this text.
 
 .PHONY: all test clean help
 
-all: template.yaml lambda/macro.py lambda/resource.py ## Build a package
-	sam package \
-		--template-file template.yaml \
-		--output-template-file packaged.yaml \
-		--s3-bucket shogo82148-sam
+all: lambda.zip ## Build a package
+
+lambda.zip: lambda/macro.py lambda/resource.py
+	cd lambda && zip -r ../lambda.zip .
 
 test:
 	sam validate

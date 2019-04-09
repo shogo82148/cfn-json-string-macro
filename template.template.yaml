@@ -1,6 +1,6 @@
 AWSTemplateFormatVersion: 2010-09-09
 Transform: AWS::Serverless-2016-10-31
-Description: cfn-json-string-macro v0.0.1 convert input to JSON string
+Description: cfn-json-string-macro v%%VERSION%% convert input to JSON string
 
 Resources:
   ResourceFunction:
@@ -10,7 +10,7 @@ Resources:
       CodeUri: ./lambda.zip
       Handler: resource.handler
       Tags:
-        Version: 0.0.1
+        Version: %%VERSION%%
 
   MacroFunction:
     Type: AWS::Serverless::Function
@@ -22,7 +22,7 @@ Resources:
         Variables:
           LAMBDA_ARN: !GetAtt ResourceFunction.Arn
       Tags:
-        Version: 0.0.1
+        Version: %%VERSION%%
 
   Macro:
     Type: AWS::CloudFormation::Macro
