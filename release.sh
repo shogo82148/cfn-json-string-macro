@@ -16,7 +16,7 @@ mkdir -p "$DIST"
 
 make all
 cp lambda.zip "$DIST"
-cd template.yaml "$DIST"
+cp template.yaml "$DIST"
 
 cd "$DIST"
 while read -r REGION; do
