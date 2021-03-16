@@ -1,0 +1,14 @@
+name: reviewdog
+
+on: pull_request
+
+jobs:
+  actions-cfn-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: shogo82148/actions-cfn-lint@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          level: warning
+          args: template.template.yaml
