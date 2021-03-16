@@ -94,7 +94,7 @@ Resources:
     Type: JSON::String # specify "JSON::String"
     Properties:
       Text:
-        AcountId: !Ref AWS::AccountId
+        AccountId: !Ref AWS::AccountId
         Region: !Ref AWS::Region
         StackId: !Ref AWS::StackId
 
