@@ -6,8 +6,8 @@ help: ## Show this text.
 .PHONY: all
 all: lambda.zip template.yaml ## Build a package.
 
-lambda.zip: lambda/macro.py lambda/resource.py
-	cd lambda && zip -r ../lambda.zip .
+lambda.zip: awslambda/macro.py awslambda/resource.py
+	cd awslambda && zip -r ../lambda.zip .
 
 .PHONY: test
 test: ## Run tests.
