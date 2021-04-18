@@ -4,12 +4,10 @@ ROOT=$(cd "$(dirname "$0")" && pwd)
 
 set -ue
 
-MAJOR=0
-MINOR=0
-PATCH=2
-VERSION="$MAJOR.$MINOR.$PATCH"
-
-perl -pe 's!%%VERSION%%!'"$VERSION"'!g' "$ROOT/template.template.yaml" > "$ROOT/template.yaml"
+VERSION=$(cat VERSION)
+MAJOR=$(echo "$VERSION" | cut -d. -f 1)
+MINOR=$(echo "$VERSION" | cut -d. -f 2)
+PATCH=$(echo "$VERSION" | cut -d. -f 3)
 
 DIST=$ROOT/.build/$VERSION
 mkdir -p "$DIST"
