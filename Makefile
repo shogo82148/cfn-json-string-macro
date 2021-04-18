@@ -7,7 +7,7 @@ help: ## Show this text.
 all: lambda.zip template.yaml ## Build a package.
 
 lambda.zip: awslambda/macro.py awslambda/resource.py
-	cd awslambda && zip -r ../lambda.zip .
+	cd awslambda && zip ../lambda.zip macro.py resource.py
 
 .PHONY: test
 test: ## Run tests.
