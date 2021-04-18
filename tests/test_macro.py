@@ -5,7 +5,7 @@ os.environ["LAMBDA_ARN"] = "arn::dummy"
 
 from awslambda.macro import handler
 
-def test_dummy():
+def test_macro():
     ret = handler({
         "region": "us-east-1", 
         "accountId": "123456789012", 
