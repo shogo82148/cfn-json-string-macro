@@ -6,23 +6,23 @@ Resources:
   ResourceFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Runtime: python3.7
+      Runtime: python3.8
       CodeUri: ./lambda.zip
       Handler: resource.handler
       Tags:
-        Version: 0.0.2
+        Version: "0.0.2"
 
   MacroFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Runtime: python3.7
+      Runtime: python3.8
       CodeUri: ./lambda.zip
       Handler: macro.handler
       Environment:
         Variables:
           LAMBDA_ARN: !GetAtt ResourceFunction.Arn
       Tags:
-        Version: 0.0.2
+        Version: "0.0.2"
 
   Macro:
     Type: AWS::CloudFormation::Macro

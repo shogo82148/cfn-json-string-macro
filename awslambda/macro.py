@@ -2,7 +2,8 @@ import os
 
 LAMBDA_ARN = os.environ["LAMBDA_ARN"]
 
-def handle_template(request_id, template):
+
+def handle_template(request_id: str, template: object) -> object:
     for _, resource in template.get("Resources", {}).items():
         if resource["Type"] == "JSON::String":
             properties = resource.get("Properties", {})
@@ -14,9 +15,10 @@ def handle_template(request_id, template):
             })
     return template
 
+
 def handler(event, context):
-    fragment = event["fragment"]
-    status = "success"
+    fragment: object = event["fragment"]
+    status: str = "success"
 
     try:
         fragment = handle_template(event["requestId"], event["fragment"])

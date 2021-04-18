@@ -8,7 +8,7 @@ logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
 
 
-def cfn_response(url, body):
+def cfn_response(url: str, body: object) -> None:
     data = json.dumps(body).encode()
     headers = {
         'content-type': 'application/json',
