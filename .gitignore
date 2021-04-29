@@ -245,3 +245,7 @@ $RECYCLE.BIN/
 
 /packaged.yaml
 *.zip
+
+# release files
+.build/
+.build-sam/
