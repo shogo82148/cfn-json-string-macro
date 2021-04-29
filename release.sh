@@ -13,9 +13,10 @@ DIST=$ROOT/.build/$VERSION
 mkdir -p "$DIST"
 
 make all
+
+: publish as a CloudFormation template
 cp lambda.zip "$DIST"
 cp template.yaml "$DIST"
-
 cd "$DIST"
 while read -r REGION; do
     BUCKET=shogo82148-cloudformation-template-$REGION
@@ -56,3 +57,17 @@ EOS
 cd "$ROOT"
 ( git add . && git commit -m "bump up to v$VERSION" && git push ) || true
 ghr -u shogo82148 --draft --replace "v$VERSION" "$DIST"
+
+: publish to AWS Serverless Application Repository
+DIST_SAM=$ROOT/.build-sam/$VERSION
+mkdir -p "$DIST_SAM"
+cp README.md "$DIST_SAM"
+cp LICENSE "$DIST_SAM"
+sam package \
+    --region us-east-1 \
+    --template-file "template.yaml" \
+    --output-template-file "$DIST_SAM/packaged.yaml" \
+    --s3-bucket shogo82148-sam
+sam publish \
+    --region us-east-1 \
+    --template "$DIST_SAM/packaged.yaml"

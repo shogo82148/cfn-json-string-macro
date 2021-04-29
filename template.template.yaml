@@ -2,6 +2,25 @@ AWSTemplateFormatVersion: 2010-09-09
 Transform: AWS::Serverless-2016-10-31
 Description: cfn-json-string-macro v%%VERSION%% convert input to JSON string
 
+Metadata:
+  AWS::ServerlessRepo::Application:
+    Name: cfn-json-string-macro
+    Description: convert input to JSON string
+    Author: Shogo Ichinose
+    SpdxLicenseId: MIT
+    LicenseUrl: LICENSE
+    ReadmeUrl: README.md
+    Labels: ["macro", "json"]
+    HomePageUrl: https://github.com/shogo82148/cfn-json-string-macro
+    SemanticVersion: "%%VERSION%%"
+    SourceCodeUrl: https://github.com/shogo82148/cfn-json-string-macro
+
+Parameters:
+  MacroName:
+    Type: String
+    Description: the name of cloudformation macro
+    Default: "JSONString"
+
 Resources:
   ResourceFunction:
     Type: AWS::Serverless::Function
@@ -27,5 +46,5 @@ Resources:
   Macro:
     Type: AWS::CloudFormation::Macro
     Properties:
-      Name: JSONString
+      Name: !Ref MacroName
       FunctionName: !GetAtt MacroFunction.Arn
