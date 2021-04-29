@@ -17,6 +17,8 @@ make all
 : publish as a CloudFormation template
 cp lambda.zip "$DIST"
 cp template.yaml "$DIST"
+cp README.md "$DIST_SAM"
+cp LICENSE "$DIST_SAM"
 cd "$DIST"
 while read -r REGION; do
     BUCKET=shogo82148-cloudformation-template-$REGION
