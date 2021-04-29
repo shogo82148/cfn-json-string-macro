@@ -4,7 +4,7 @@ Description: cfn-json-string-macro v%%VERSION%% convert input to JSON string
 
 Metadata:
   AWS::ServerlessRepo::Application:
-    Name: acme-cert-updater
+    Name: cfn-json-string-macro
     Description: convert input to JSON string
     Author: Shogo Ichinose
     SpdxLicenseId: MIT
