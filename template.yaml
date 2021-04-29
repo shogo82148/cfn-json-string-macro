@@ -1,6 +1,6 @@
 AWSTemplateFormatVersion: 2010-09-09
 Transform: AWS::Serverless-2016-10-31
-Description: cfn-json-string-macro v0.0.2 convert input to JSON string
+Description: cfn-json-string-macro v0.0.3 convert input to JSON string
 
 Metadata:
   AWS::ServerlessRepo::Application:
@@ -12,7 +12,7 @@ Metadata:
     ReadmeUrl: README.md
     Labels: ["macro", "json"]
     HomePageUrl: https://github.com/shogo82148/cfn-json-string-macro
-    SemanticVersion: "0.0.2"
+    SemanticVersion: "0.0.3"
     SourceCodeUrl: https://github.com/shogo82148/cfn-json-string-macro
 
 Parameters:
@@ -29,7 +29,7 @@ Resources:
       CodeUri: ./lambda.zip
       Handler: resource.handler
       Tags:
-        Version: "0.0.2"
+        Version: "0.0.3"
 
   MacroFunction:
     Type: AWS::Serverless::Function
@@ -41,7 +41,7 @@ Resources:
         Variables:
           LAMBDA_ARN: !GetAtt ResourceFunction.Arn
       Tags:
-        Version: "0.0.2"
+        Version: "0.0.3"
 
   Macro:
     Type: AWS::CloudFormation::Macro
