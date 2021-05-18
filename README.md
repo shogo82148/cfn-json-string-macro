@@ -1,6 +1,7 @@
 [![Build Status](https://travis-ci.com/shogo82148/cfn-json-string-macro.svg?branch=master)](https://travis-ci.com/shogo82148/cfn-json-string-macro)
 
 # cfn-json-string-macro
+
 A CloudFormation Macro that converts a JSON to a string
 
 ## Motivation
@@ -80,7 +81,7 @@ git clone git@github.com:shogo82148/cfn-json-string-macro.git
 cd cfn-json-string-macro
 make all
 aws cloudformation package --template-file template.yml --s3-bucket $YOUR_BUCKET_NAME --output-template-file packaged.yaml
-aws cloudformation deploy --template-file packaged.yaml --stack-name json-macro --capabilities CAPABILITY_IAM
+aws cloudformation deploy --template-file packaged.yaml --stack-name json-macro --capabilities CAPABILITY_IAM CAPABILITY_AUTO_EXPAND
 ```
 
 ### Write Your Templates
