@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/shogo82148/cfn-json-string-macro.svg?branch=master)](https://travis-ci.com/shogo82148/cfn-json-string-macro)
+[![test](https://github.com/shogo82148/cfn-json-string-macro/actions/workflows/test.yml/badge.svg)](https://github.com/shogo82148/cfn-json-string-macro/actions/workflows/test.yml)
 
 # cfn-json-string-macro
 
