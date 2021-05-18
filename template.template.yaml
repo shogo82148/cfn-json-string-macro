@@ -18,8 +18,25 @@ Metadata:
 Parameters:
   MacroName:
     Type: String
-    Description: the name of cloudformation macro
+    Description: |
+      The name of the cloudformation macro.
     Default: "JSONString"
+  MacroFunctionName:
+    Type: String
+    Description: |
+      The function name that handles cloudformation macros.
+      If it is empty, the name is auto generated.
+    Default: ""
+  ResourceFunctionName:
+    Type: String
+    Description: |
+      the function name that handles cloudformation custom resources.
+      If it is empty, the name is auto generated.
+    Default: ""
+
+Conditions:
+  HasMacroFunctionName: !Not [!Equals [!Ref MacroFunctionName, ""]]
+  HasResourceFunctionName: !Not [!Equals [!Ref MacroFunctionName, ""]]
 
 Resources:
   ResourceFunction:
@@ -28,6 +45,10 @@ Resources:
       Runtime: python3.8
       CodeUri: ./lambda.zip
       Handler: resource.handler
+      FunctionName: !If
+        - HasResourceFunctionName
+        - !Ref ResourceFunctionName
+        - !Ref AWS::NoValue
       Tags:
         Version: "%%VERSION%%"
 
@@ -37,6 +58,10 @@ Resources:
       Runtime: python3.8
       CodeUri: ./lambda.zip
       Handler: macro.handler
+      FunctionName: !If
+        - HasMacroFunctionName
+        - !Ref MacroFunctionName
+        - !Ref AWS::NoValue
       Environment:
         Variables:
           LAMBDA_ARN: !GetAtt ResourceFunction.Arn
