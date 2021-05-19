@@ -6,7 +6,7 @@ Metadata:
   AWS::ServerlessRepo::Application:
     Name: cfn-json-string-macro
     Description: convert input to JSON string
-    Author: Ichinose Shogo
+    Author: Shogo Ichinose
     SpdxLicenseId: MIT
     LicenseUrl: LICENSE
     ReadmeUrl: README.md
