@@ -19,6 +19,7 @@ cp lambda.zip "$DIST"
 cp template.yaml "$DIST"
 cp README.md "$DIST"
 cp LICENSE "$DIST"
+cp cfn-resource-specification-json.json "$DIST"
 cd "$DIST"
 while read -r REGION; do
     BUCKET=shogo82148-cloudformation-template-$REGION
