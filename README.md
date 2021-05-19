@@ -84,7 +84,7 @@ cfnjsonstringmacro:
   Properties:
     Location:
       ApplicationId: arn:aws:serverlessrepo:us-east-1:445285296882:applications/cfn-json-string-macro
-      SemanticVersion: 0.0.3
+      SemanticVersion: 0.0.4
     Parameters:
       # The name of the cloudformation macro.
       MacroName: "JSONString"
@@ -149,7 +149,7 @@ aws cloudformation create-stack \
 
 # deploy the specific version
 aws cloudformation create-stack \
-    --template-url https://shogo82148-cloudformation-template-$REGION.s3.$REGION.amazonaws.com/cfn-json.string-macro/v0.0.3.yaml \
+    --template-url https://shogo82148-cloudformation-template-$REGION.s3.$REGION.amazonaws.com/cfn-json.string-macro/v0.0.4.yaml \
     --stack-name json-macro \
     --capabilities CAPABILITY_IAM CAPABILITY_AUTO_EXPAND
 
