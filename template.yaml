@@ -6,7 +6,7 @@ Metadata:
   AWS::ServerlessRepo::Application:
     Name: cfn-json-string-macro
     Description: convert input to JSON string
-    Author: Shogo Ichinose
+    Author: Ichinose Shogo
     SpdxLicenseId: MIT
     LicenseUrl: LICENSE
     ReadmeUrl: README.md
@@ -36,7 +36,7 @@ Parameters:
 
 Conditions:
   HasMacroFunctionName: !Not [!Equals [!Ref MacroFunctionName, ""]]
-  HasResourceFunctionName: !Not [!Equals [!Ref MacroFunctionName, ""]]
+  HasResourceFunctionName: !Not [!Equals [!Ref ResourceFunctionName, ""]]
 
 Resources:
   ResourceFunction:
