@@ -135,33 +135,33 @@ aws cloudformation package --template-file template.yml --s3-bucket $YOUR_BUCKET
 aws cloudformation deploy --template-file packaged.yaml --stack-name json-macro --capabilities CAPABILITY_IAM CAPABILITY_AUTO_EXPAND
 ```
 
-### Deploy from Pre-built Packages
+### Deploy from Pre-built Packages (Legacy)
 
-Pre-built Packages are available on `https://s3-$REGION.amazonaws.com/shogo82148-cloudformation-template-$REGION/cfn-json.string-macro/latest.yaml`,
+Pre-built Packages are available on `https://shogo82148-cloudformation-template-$REGION.s3.$REGION.amazonaws.com/cfn-json.string-macro/latest.yaml`,
 You can deploy cfn-json-string-macro the template directly.
 
 ```bash
 # deploy the latest version
 aws cloudformation create-stack \
-    --template-url https://s3-$REGION.amazonaws.com/shogo82148-cloudformation-template-$REGION/cfn-json-string-macro/latest.yaml \
+    --template-url https://shogo82148-cloudformation-template-$REGION.s3.$REGION.amazonaws.com/cfn-json.string-macro/latest.yaml \
     --stack-name json-macro \
     --capabilities CAPABILITY_IAM CAPABILITY_AUTO_EXPAND
 
 # deploy the specific version
 aws cloudformation create-stack \
-    --template-url https://s3-$REGION.amazonaws.com/shogo82148-cloudformation-template-$REGION/cfn-json-string-macro/v0.0.3.yaml \
+    --template-url https://shogo82148-cloudformation-template-$REGION.s3.$REGION.amazonaws.com/cfn-json.string-macro/v0.0.3.yaml \
     --stack-name json-macro \
     --capabilities CAPABILITY_IAM CAPABILITY_AUTO_EXPAND
 
 # deploy v0.0.x
 aws cloudformation create-stack \
-    --template-url https://s3-$REGION.amazonaws.com/shogo82148-cloudformation-template-$REGION/cfn-json-string-macro/v0.0.yaml \
+    --template-url https://shogo82148-cloudformation-template-$REGION.s3.$REGION.amazonaws.com/cfn-json.string-macro/v0.0.yaml \
     --stack-name json-macro \
     --capabilities CAPABILITY_IAM CAPABILITY_AUTO_EXPAND
 
 # deploy v0.x.x
 aws cloudformation create-stack \
-    --template-url https://s3-$REGION.amazonaws.com/shogo82148-cloudformation-template-$REGION/cfn-json-string-macro/v0.yaml \
+    --template-url https://shogo82148-cloudformation-template-$REGION.s3.$REGION.amazonaws.com/cfn-json.string-macro/v0.yaml \
     --stack-name json-macro \
     --capabilities CAPABILITY_IAM CAPABILITY_AUTO_EXPAND
 ```
