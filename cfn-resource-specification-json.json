@@ -1,0 +1,21 @@
+{
+    "ResourceSpecificationVersion": "1.0.0",
+    "PropertyTypes": {},
+    "ResourceTypes": {
+        "JSON::String": {
+            "Documentation": "https://github.com/shogo82148/cfn-json-string-macro",
+            "Attributes": {
+                "Value": {
+                    "PrimitiveType": "String"
+                }
+            },
+            "Properties": {
+                "Value": {
+                    "PrimitiveType": "Json",
+                    "Required": true,
+                    "UpdateType": "Mutable"
+                }
+            }
+        }
+    }
+}
