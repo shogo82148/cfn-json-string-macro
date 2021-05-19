@@ -50,7 +50,7 @@ Resources:
   LifecyclePolicy:
     Type: JSON::String
     Properties:
-      Text:
+      Value:
         rules:
           - rulePriority: 1 # now we can add comments in a policy!
             description: Expire images older than 14 days
@@ -67,7 +67,7 @@ Resources:
     Properties:
       RepositoryName: awesome-application
       LifecyclePolicy:
-        LifecyclePolicyText: !GetAtt LifecyclePolicy.Text
+        LifecyclePolicyText: !GetAtt LifecyclePolicy.Value
 ```
 
 ## Usage
@@ -106,7 +106,7 @@ Resources:
   JSON:
     Type: JSON::String # specify "JSON::String"
     Properties:
-      Text:
+      Value:
         AccountId: !Ref AWS::AccountId
         Region: !Ref AWS::Region
         StackId: !Ref AWS::StackId
@@ -114,7 +114,7 @@ Resources:
 Outputs:
   JSON:
     # Get JSON string as an attribute
-    Value: !GetAtt JSON.Text
+    Value: !GetAtt JSON.Value
 ```
 
 ```bash

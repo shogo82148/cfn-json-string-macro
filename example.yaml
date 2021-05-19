@@ -5,7 +5,7 @@ Resources:
   JSON:
     Type: JSON::String # specify "JSON::String"
     Properties:
-      Text:
+      Value:
         AccountId: !Ref AWS::AccountId
         Region: !Ref AWS::Region
         StackId: !Ref AWS::StackId
@@ -13,4 +13,4 @@ Resources:
 Outputs:
   JSON:
     # Get JSON string as an attribute
-    Value: !GetAtt JSON.Text
+    Value: !GetAtt JSON.Value
