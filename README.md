@@ -1,8 +1,11 @@
 [![test](https://github.com/shogo82148/cfn-json-string-macro/actions/workflows/test.yml/badge.svg)](https://github.com/shogo82148/cfn-json-string-macro/actions/workflows/test.yml)
 
-# cfn-json-string-macro
+# DEPRECATED: cfn-json-string-macro
 
-A CloudFormation Macro that converts a JSON to a string
+A CloudFormation Macro that converts a JSON to a string.
+
+DEPRECATED: [`AWS::LanguageExtensions` transform](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-languageextension-transform.html) provides same function.
+Please use [`Fn::ToJsonString` intrinsic function](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-ToJsonString.html) instead of cfn-json-string-macro.
 
 ## Motivation
 
@@ -68,6 +71,40 @@ Resources:
       RepositoryName: awesome-application
       LifecyclePolicy:
         LifecyclePolicyText: !GetAtt LifecyclePolicy.Value
+```
+
+-----
+
+DEPRECATED: I recommend you to migrate to `Fn::ToJsonString`.
+It is officially supported by AWS.
+
+```yaml
+AWSTemplateFormatVersion: 2010-09-09
+Transform: AWS::LanguageExtensions
+Resources:
+  LifecyclePolicy:
+    Type: JSON::String
+    Properties:
+      Value:
+
+  Repository:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: awesome-application
+      LifecyclePolicy:
+        LifecyclePolicyText:
+          # a policy that expires untagged images older than 14 day
+          Fn::ToJsonString:
+            rules:
+              - rulePriority: 1 # now we can add comments in a policy!
+                description: Expire images older than 14 days
+                selection:
+                  tagStatus: untagged
+                  countType: sinceImagePushed
+                  countUnit: days
+                  countNumber: 14
+                action:
+                  type: expire
 ```
 
 ## Usage
